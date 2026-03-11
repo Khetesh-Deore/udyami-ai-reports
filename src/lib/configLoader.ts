@@ -1,5 +1,3 @@
-import yaml from 'js-yaml';
-
 export interface Agent {
   id: string;
   name: string;
@@ -40,13 +38,15 @@ export async function loadConfig(): Promise<Config> {
   }
 
   try {
-    const response = await fetch('/config.yaml');
-    const yamlText = await response.text();
-    const config = yaml.load(yamlText) as Config;
+    const response = await fetch('/config.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const config = await response.json() as Config;
     configCache = config;
     return config;
   } catch (error) {
-    console.error('Failed to load config.yaml:', error);
+    console.error('Failed to load config.json:', error);
     throw new Error('Failed to load configuration');
   }
 }
