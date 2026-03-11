@@ -3,7 +3,6 @@ import { Download, Copy, Check, ThumbsUp, ThumbsDown, Send, RotateCcw } from "lu
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { useState } from "react";
 
 interface ChatMessageProps {
@@ -89,7 +88,6 @@ export function ChatMessage({
           ) : (
             <div className="chat-markdown text-sm">
               <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
                 components={{
                   h1: ({ children }) => (
                     <h1 className="text-lg font-bold tracking-tight mt-4 mb-2 first:mt-0 text-foreground">{children}</h1>

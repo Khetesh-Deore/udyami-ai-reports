@@ -7,7 +7,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { ChatMessage } from "@/components/chat/ChatMessage";
 import { useToast } from "@/hooks/use-toast";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { saveDocument, tryParseAiDocument } from "@/lib/documents";
@@ -292,7 +291,7 @@ export function AIChatWorkspace({ contextData }: AIChatWorkspaceProps) {
         <div ref={pdfRef} className="p-12 bg-white text-black min-h-[297mm]">
           {downloadContent && (
             <div className="prose prose-sm max-w-none prose-headings:font-bold prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:mb-3 prose-li:mb-1 prose-table:border-collapse prose-th:border prose-th:border-gray-300 prose-th:px-3 prose-th:py-2 prose-th:bg-gray-50 prose-th:text-left prose-th:text-sm prose-td:border prose-td:border-gray-300 prose-td:px-3 prose-td:py-2 prose-td:text-sm">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{downloadContent}</ReactMarkdown>
+              <ReactMarkdown>{downloadContent}</ReactMarkdown>
             </div>
           )}
         </div>
